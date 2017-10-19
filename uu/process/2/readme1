@@ -1,0 +1,32 @@
+
+
+
+wait------返回等待的进程号
+waitpid 
+wifexited----返回值为真，进程结束
+信号：SIGINL
+kill (pid,SIGINL)-----异常结束
+
+wait（）:等待主进程的直系子进程结束
+waitpid（）:等待某个特定的进程
+fork()：复制一份父进程
+vfork():共享数据段，代码段   
+
+exit()
+-exit();
+about;
+
+
+进程退出
+
+uid
+gid
+ 0 --- 0 root
+ 优先级：gepriority
+ int getpriority(int which ,who);
+                 //prio_process,getpid()
+nice-----设置优先级
+
+
+bin:放到bin目录下，就可以实现
+解决绝对路径---加上环境

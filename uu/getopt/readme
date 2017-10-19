@@ -1,0 +1,21 @@
+ 解决选项问题:
+
+getopt(argc,char*argv[],opt)!= -1
+
+optopt:指向无效选项的值
+optarg:指向匹配选项的数值
+opterr=0；不输出错误选项
+
+缺省：缺省的为参数
+./test -a 
+无效：选项为无效
+
+都与‘？’匹配
+
+error,invalid option.
+
+：----->解决缺省问题（less option）
+
+./test -a 
+
+less option

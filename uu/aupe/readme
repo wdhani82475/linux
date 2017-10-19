@@ -1,0 +1,26 @@
+I/O操作：
+
+文件描述符:int fd=open()
+
+int fd=	dup（int filedes）
+------重新定向（输出/输入/错误）
+返回值---返回一个最小的文件描述符
+-----file----->/(fd)
+-----file------\(fd1)
+int fd1=dup (int filedes1,int filedes2）
+
+区别：dup:返回当前可用文件描述符中最小数值
+	
+	  dup2（dup to dest_）:
+	    用filedes2指定新描述符的数值，如果filedes2打开，则将其关闭；如果filedes1=filedes2,则dup2返回filedes2,而不关闭它。
+
+都是对文件描述符进行操作
+
+标准：输入---从键盘 0
+	  输出---屏幕   1
+	  错误---文件   2
+
+非标准：重定向-----重新定义输入/输出/错误的方向
+
+
+		
