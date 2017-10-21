@@ -15,15 +15,29 @@ kill -9  pid 杀死进程
 获得父进程： ppid---getppid()
 
 父进程管理子进程：
-	
+	pid_t  pid = fork();
+	if(pid>0)
+	{
+		sleep(3);
+		printf("parent precess\n");
+	}
+	else if(pid==0)
+	{
+		sleep(2);
+		printf("child precess\n");
+	}
+	else
+		prinf("fork error");
+
 	1.一般情况下，子进程先执行结束后，父进程还在运行
 	（称为彊进程）
 	2.当父进程先结束时，剩下了子进程运行(称为孤儿进程)
+	souce be init process resource
 
-	为了解决孤儿进程：
+	3.为了解决孤儿进程：
 				    父进程等待------》子进程执行结束
 					int status;
-					wait(&status);
+				pid_t pid=wait(&status);//return wait pid
  
 
 多进程：利用fork(),函数实现，异步运行
