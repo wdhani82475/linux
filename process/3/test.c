@@ -6,6 +6,18 @@
 
 int main()
 {
+	//execl("/bin/ls","ls",NULL);
+	//execle("/bin/ls","ls","-la",NULL);
+	//execlp("ls","ls","-la",NULL);
+	char* ar[]={"ls",NULL};
+	execvp("ls",ar);//realize ls
+	return 0;
+}
+
+
+/*
+int main()
+{
 	pid_t pid=fork();
 	if(pid == 0)
 	{
@@ -27,8 +39,7 @@ int main()
 	return 0;
 	
 }
-
-
+*/
 /*
 int main()
 {

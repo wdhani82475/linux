@@ -1,0 +1,24 @@
+
+#改变进程的优先级
+#include<sys/resource.h>
+int oldprio=int getpriority(int which,int who);
+				PRIO_PROCESS getpid()
+int newprio=nice(3);-----priority is 3
+
+
+
+exec 函数族
+function:
+		1.调用新进程
+		2.实现简单的库函数 ls 
+
+execl("pathname","command",NULL)----execl("/bin/ls","ls",NULL);
+execlp("ls","ls",NULL)//带有环境变量----execlp("name","command",NULL);
+execle ("pathname","command","canshu",NULL) -----execle("/bin/ls","ls","-la",NULL)
+execv   char* arg[]={"ls","la",NULL};
+		execv("pathmname",arg );
+execvp("name",char* const argv[] ) -----char *arg[]={"ls",NULL};
+									    execvp("ls",arg);
+execve://no environment variables /bin/ls
+
+
