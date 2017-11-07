@@ -41,8 +41,6 @@ int main()
 	}
 	printf("semid=%d\n",semid);
 	
-	//value && sem
-	union semun init_val;//init value
 	init_val.val=3;
 	semctl(semid,0,SETVAL,init_val);
 	sem_val=semctl(semid,0,GETVAL);

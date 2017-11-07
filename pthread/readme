@@ -1,0 +1,11 @@
+
+
+pthread_create(&tid,NULL,fun,NULL);//create thread
+
+pthread_self()//obtain tid
+
+pthread_join(tid,NULL)//wait child thread over and main thread over
+
+main thread 
+				no affect each other(independence)
+child thread  
