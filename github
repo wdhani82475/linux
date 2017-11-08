@@ -1,0 +1,12 @@
+
+
+yum install github -y
+
+upload:
+			git clone http://wdhani82475.com/linux.git
+			git  add -A
+			git  commit -m ""
+			git push origin master
+
+download:
+		git pull origin master	

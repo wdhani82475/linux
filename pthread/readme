@@ -1,11 +1,53 @@
-
+主线程和子线程互不影响，各自执行各自的线程。线程是独立执行的最小单位，进程是拥有资源的最小单位。
 
 pthread_create(&tid,NULL,fun,NULL);//create thread
-
+													----the last opt is main connect thread
 pthread_self()//obtain tid
 
-pthread_join(tid,NULL)//wait child thread over and main thread over
+pthread_exit(content)//who wait who obtain content
+
+pthread_join(tid,NULL)//wait child thread over and main thread over (-->NULL)
 
 main thread 
 				no affect each other(independence)
 child thread  
+
+利用for循环创建多线程，并且利用for循环等待结束。
+
+线程之间共享资源（进程），线程之间运行是杂乱无章的，利用同步机制解决此问题。
+
+互斥锁：对于共享资源
+
+pthread_t
+
+pthread_mutex_t mutex=PTHREAD_INITIALZER// 静态初始化
+
+pthread_mutex_init()
+thread_mutex_destory()
+
+pthread_mutex_t mutex;// mutex----->互斥量(共享)，临界资源。
+pthread_mutex_lock(&mutex)
+A()
+pthread_mutex_unlock(&mutex)
+
+								//A用完后资源留给B，B再用。
+pthread_mutex_lock(&mutex)
+B()
+pthread_mutex_unlock(&mutex)
+
+pthread_mutex_trylock()//非阻塞函数，可以继续执行,但是上锁成功与否根据返回值判断.成功返回0.
+加锁未解锁，说明临界区资源被占用，lock和unlock区域的称为临界区。另一个线程在lock处，阻塞等待。
+
+
+条件变量（解决死）,与互斥锁搭配使用
+
+pthread_cond_t cond=PTHREAD_COND_INITIALIZER;
+pthread_cond_wait(&cond,&mutex)//阻塞状态，解锁
+
+pthread_cond_siginl(&cond)//执行,加锁
+
+唤醒阻塞队列中的 第一个。
+
+pthread_cond_broadcast(&cond);//广播
+
+
