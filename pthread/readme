@@ -50,4 +50,10 @@ pthread_cond_siginl(&cond)//执行,加锁
 
 pthread_cond_broadcast(&cond);//广播
 
+sleep与wait区别：
+
+sleep()//占用系统资源
+pthread_cond_wait()//不占用系统资源
+
+尽可能让临界区域最小。
 

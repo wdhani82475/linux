@@ -2,6 +2,61 @@
 #include<unistd.h>
 #include<stdlib.h>
 #include<pthread.h>
+
+pthread_mutex_t mutex=PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t cond1=PTHREAD_COND_INITIALIZER;
+pthread_cond_t cond2=PTHREAD_COND_INITIALIZER;
+#define NUM 10
+static int i=1;
+//输出奇数
+void*fun1(void*arg)
+{
+	
+	pthread_mutex_lock(&mutex);
+	while(i<=NUM)
+	{
+		if(i%2 != 0)
+		{
+			printf("fun1 =%d\n",i);
+			i++;
+			pthread_cond_signal(&cond2);
+		}
+		else
+		    pthread_cond_wait(&cond1,&mutex);
+	}
+	pthread_mutex_unlock(&mutex);
+}
+//输出偶数
+void*fun2(void*arg)
+{
+	
+	pthread_mutex_lock(&mutex);
+	while(i<=NUM)
+	{
+		if(i%2 == 0 )
+		{
+			printf("fun2= %d\n",i);
+			i++;
+			pthread_cond_signal(&cond1);
+		}
+		else
+			pthread_cond_wait(&cond2,&mutex);
+	}
+	pthread_mutex_unlock(&mutex);
+}
+int main()
+{
+	pthread_t tid1,tid2;
+
+	pthread_create(&tid1,NULL,fun1,NULL);
+	pthread_create(&tid2,NULL,fun2,NULL);
+	pthread_join(tid1,NULL);
+	pthread_join(tid2,NULL);
+	return 0;
+}
+
+
+/*
 #define N 5
 pthread_mutex_t mutex=PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t cond=PTHREAD_COND_INITIALIZER;
@@ -36,7 +91,7 @@ int main()
 	pthread_join(tid1,NULL);
 	return 0;
 }
-
+*/
 /*
 pthread_mutex_t mutex=PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t cond=PTHREAD_COND_INITIALIZER;
