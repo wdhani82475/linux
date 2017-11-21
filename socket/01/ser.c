@@ -32,7 +32,7 @@ int main()
 		perror("listen");
 		exit(1);
 	}
-	int sockCon=accept(sockSer,(struct sockaddr*)&addrCli,&len);
+	int sockCon=accept(sockSer,(struct sockaddr*)&addrCli,&len);//产生一个connfd，即一个客户端可服务器进行通信
 	if(sockCon == -1)
 	{
 		printf("Ser connect cli  failed.\n");

@@ -11,6 +11,10 @@ int main()
 		addrSer.sin_addr.s_addr = inet_addr(SERVER_IP);
 		addrSer.sin_port = htons(SERVER_PORT);
 		socklen_t len=sizeof( struct sockaddr);
+
+		int yes = 1;
+		setsockopt(sockSer,SOL_SOCKET,SO_REUSEADDR,&yes,sizeof(int));//重新获得ip和端口号
+
 		int ret = bind(sockSer,(struct sockaddr*)&addrSer,len);
 		{
 				if(ret == -1)
@@ -34,7 +38,7 @@ int main()
 		while(1)
 		{
 				
-		 if((connfd=accept(sockSer,(struct sockaddr*)&addrCli,&len)) == -1)//服务器和客户端通信一次结束后,会产生新的描述符即(可以实现不同的客户端和服务器进行通信(但只能和最后一次的客户端进行通信))
+		 if((connfd=accept(sockSer,(struct sockaddr*)&addrCli,&len)) == -1)//服务器和客户端通信一次结束后,会产生新的描述符即(可以实现不同的客户端和服务器进行通信(但只能客户端进行通信一次)（因为accept()为阻塞函数），总在等待connfd)
 		{
 				printf("Ser Connect Cli fail.\n");
 		}
