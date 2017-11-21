@@ -5,14 +5,18 @@
 #include<unistd.h>
 #include<sys/socket.h>
 #include<netinet/in.h>
+#include<string.h>
+#include<stdlib.h>
 
 
- enum oper{ADD,SUB,MUL,DIV,MOD,QUIT};
- typedef struct {
-		 op1;
-		 op2;
-		 oper;
-		 }calc;
+#define CMD_SIZE 5
+typedef  enum{ADD,SUB,MUL,DIV,MOD,QUIT}ENUM_CALC;//枚举类型
+typedef struct calcst
+{
+	int	op1;
+	int op2;
+	ENUM_CALC op;
+}calcst;
 
 
 
