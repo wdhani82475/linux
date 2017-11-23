@@ -10,7 +10,7 @@ int main(int argc,char* argv[])
 				perror("socket bind listen");
 				exit(1);
 		}
-		struct sockaddr_in addrCli,addrSer;
+		struct sockaddr_in addrCli;
 		socklen_t len = sizeof(struct sockaddr);
 		int sockCon=accept(sockSer,(struct sockaddr*)&addrCli,&len);//产生一个connfd，即一个客户端可服务器进行通信
 		if(sockCon == -1)
