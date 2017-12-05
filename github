@@ -10,3 +10,7 @@ upload:
 
 download:
 		git pull origin master	
+
+
+
+		git stash----

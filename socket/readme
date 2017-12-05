@@ -50,6 +50,10 @@ int start_up(char *ip,int port,int mode) (/socket/03) ./ser 192.168.1.2 9090
 sockSer=start_up(argv[1],atoi(argv[2]),TCP);
 ============================
 
+Clent	IP: inet_addr();
+		PORT:ntohs(); 
+
+
 
 2017/11/21
 1.多进程、多线程、线程池的网络编程。
