@@ -1,6 +1,6 @@
 
 
-yum install github -y
+yum install git -y
 
 upload:
 			git clone http://wdhani82475.com/linux.git

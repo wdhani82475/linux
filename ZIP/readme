@@ -1,0 +1,8 @@
+
+
+
+
+1、将下载的文件解压
+2、perl Makefile.PL
+3、make
+4/make install
