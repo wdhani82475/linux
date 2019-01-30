@@ -10,16 +10,15 @@ int main()
 	int val,x,y;
 	scanf("%d",&val);
 	printf("请输入x和y\n");
-	scanf("%d %d",&x,&y);
+	scanf("%d,%d",&x,&y);
 	switch(val)
 	{
-		case '1':ADD();
+		case 1:ADD(x,y);
 		break;
-		case '2':SUB();
+		case 2 :SUB(x,y);
 		break;
 		default:printf("请重新选择。");
-	}
-	
+	}	
 	return 0;
 }
 int ret;

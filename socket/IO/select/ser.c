@@ -74,7 +74,7 @@ int main(int argc,char*argv[])
 						else
 						{
 							if(sockConn>maxfd)
-							maxfd = sockConn;
+							maxfd=sockConn;
 						}
 
 
@@ -89,20 +89,20 @@ int main(int argc,char*argv[])
 						if(FD_ISSET(client_sockConn[i],&set))
 						{
 							int recvbyte = recv(client_sockConn[i],buffer,128,0);
-							if(recvbyte<0)
+							if(recvbyte == -1)
 							{
 								printf("Ser recv Data Error.\n");
 								continue;
 							}
 							send(client_sockConn[i],buffer,strlen(buffer)+1,0);
-						
+		
+
 							
 						}
 					}
 				}
 			}
 		}
-
 
 	close(sockSer);
 	return 0;

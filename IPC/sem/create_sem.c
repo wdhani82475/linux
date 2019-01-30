@@ -4,7 +4,7 @@ int main(int argc,char*argv[])
 {	
 	if(argc!=3)
 	{
-		printf("<Usage >:pathname %s proj_id",argv[0]);
+		printf("<Usage >:%s pathname  proj_id",argv[0]);
 		return -1;
 	}
 
